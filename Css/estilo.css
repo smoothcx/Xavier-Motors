@@ -57,9 +57,28 @@ header {
     padding: 12px 40px;
     background-color: var(--fundo-claro);
     border-bottom: 2px solid var(--destaque);
-    position: sticky;                /* o menu acompanha a rolagem */
-    top: 0;
+    position: fixed;               /* o menu acompanha a rolagem */
+    top: -100px;
+    left: 0;
+    width: 100%;
+    box-sizing: border-box;
+    
     z-index: 100;                    /* fica por cima do resto */
+    Transition: top 0.5s ease;
+}
+
+.header-trigger {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 15px;
+    z-index: 101;
+}
+
+.header-trigger:hover + header,
+header:hover {
+    top: 0;
 }
 
 header img {
