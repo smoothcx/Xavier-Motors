@@ -1,0 +1,309 @@
+/* ==========================================================
+   XAVIER MOTORS - estilo.css
+   Para trocar o visual do site inteiro, mude só as cores
+   da seção ":root" logo abaixo.
+   ========================================================== */
+
+/* ---------- 1. VARIÁVEIS (cores e medidas reutilizáveis) ---------- */
+:root {
+    /* Cores extraídas da logo da Xavier Motors */
+    --fundo: #012A30;          /* verde petróleo profundo (fundo da logo) */
+    --fundo-claro: #07383F;    /* petróleo um tom mais claro: header e cards */
+    --fundo-escuro: #011C21;   /* petróleo mais escuro: contato e rodapé */
+    --borda: #1C4A50;          /* linhas e bordas discretas */
+    --texto: #E4DFD6;          /* creme (cor do "XAVIER") */
+    --texto-suave: #96A99E;    /* verde acinzentado (cor do "MOTORS") */
+    --destaque: #AEB8A5;       /* verde sálvia (cor do símbolo) */
+    --destaque-escuro: #C9D1C0;/* sálvia mais clara, para o hover */
+    --largura-max: 1100px;     /* largura máxima do conteúdo */
+}
+
+/* ---------- 2. RESET BÁSICO ---------- */
+/* Remove as margens e paddings padrão do navegador e faz o
+   tamanho das caixas incluir borda e espaço interno */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Rolagem suave ao clicar nos links do menu (#contato, #sobre...)
+   scroll-padding-top evita que o menu fixo cubra o título da seção */
+html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 90px;
+}
+
+/* ---------- 3. CORPO DA PÁGINA ---------- */
+body {
+    background-color: var(--fundo);
+    color: var(--texto);
+    font-family: Arial, Helvetica, sans-serif;
+    line-height: 1.6;          /* espaço entre as linhas do texto */
+}
+
+/* Regra de segurança: nenhuma imagem passa da largura do espaço */
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* ---------- 4. TOPO (header + menu) ---------- */
+header {
+    display: flex;                   /* coloca logo e menu lado a lado */
+    justify-content: space-between;  /* logo à esquerda, menu à direita */
+    align-items: center;             /* alinha os dois na vertical */
+    padding: 12px 40px;
+    background-color: var(--fundo-claro);
+    border-bottom: 2px solid var(--destaque);
+    position: sticky;                /* o menu acompanha a rolagem */
+    top: 0;
+    z-index: 100;                    /* fica por cima do resto */
+}
+
+header img {
+    width: 120px;
+}
+
+/* Tira os pontinhos da lista e coloca os links em linha */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 28px;
+}
+
+nav a {
+    color: var(--texto);
+    text-decoration: none;           /* tira o sublinhado */
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    padding-bottom: 4px;
+    border-bottom: 2px solid transparent;
+    transition: 0.3s;                /* animação suave ao passar o mouse */
+}
+
+/* hover = quando o mouse está em cima */
+nav a:hover {
+    color: var(--destaque);
+    border-bottom-color: var(--destaque);
+}
+
+/* ---------- 5. SEÇÕES EM GERAL ---------- */
+/* Centraliza o conteúdo e limita a largura */
+main section {
+    max-width: var(--largura-max);
+    margin: 0 auto;                  /* auto nos lados = centralizado */
+    padding: 70px 24px;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+h2 {
+    font-size: 2rem;
+    color: var(--destaque);
+    margin-bottom: 24px;
+}
+
+p {
+    margin-bottom: 16px;
+}
+
+/* ---------- 6. PRIMEIRA DOBRA (apresentação) ---------- */
+#inicio {
+    max-width: none;                 /* ocupa a largura toda */
+    min-height: 75vh;                /* 75% da altura da tela */
+    display: flex;
+    flex-direction: column;          /* itens um embaixo do outro */
+    justify-content: center;         /* centraliza na vertical */
+    align-items: center;             /* centraliza na horizontal */
+    text-align: center;
+    /* fundo em degradê (sem precisar de imagem) */
+    background: linear-gradient(135deg, var(--fundo-escuro) 0%, var(--fundo-claro) 100%);
+}
+
+#inicio h1 {
+    font-size: clamp(2.5rem, 7vw, 4.5rem); /* cresce/diminui com a tela */
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+#inicio p {
+    font-size: 1.3rem;
+    color: var(--texto-suave);
+    margin: 12px 0 32px;
+}
+
+/* ---------- 7. SOBRE A LOJA ---------- */
+#sobre {
+    max-width: 800px;                /* texto mais estreito lê melhor */
+}
+
+#sobre p {
+    font-size: 1.1rem;
+    color: var(--texto-suave);
+}
+
+/* ---------- 8. CONTATO ---------- */
+#contato {
+    max-width: none;
+    text-align: center;
+    background-color: var(--fundo-escuro);
+}
+
+/* ---------- 9. BOTÕES ---------- */
+button {
+    background-color: var(--destaque);
+    color: var(--fundo);
+    border: none;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-size: 1rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;                 /* mãozinha ao passar o mouse */
+    transition: 0.3s;
+}
+
+button:hover {
+    background-color: var(--destaque-escuro);
+    transform: translateY(-2px);     /* sobe 2px */
+}
+
+/* ---------- 10. RODAPÉ ---------- */
+footer {
+    background-color: var(--fundo-escuro);
+    border-top: 2px solid var(--destaque);
+    text-align: center;
+    padding: 24px;
+    color: var(--texto-suave);
+    font-size: 0.9rem;
+}
+
+footer p {
+    margin: 0;
+}
+
+/* ==========================================================
+   ESTOQUE (cards dos carros)
+   Estas regras só funcionam na página estoque.html, quando os
+   carros estiverem dentro de <div class="lista-carros"> e cada
+   um for um <article class="card">
+   ========================================================== */
+
+/* Grade: cabem quantos cards couberem na linha;
+   no celular vira uma coluna só */
+.lista-carros {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);   /* 4 colunas de tamanho igual */
+    gap: 24px;                               /* espaço entre linhas e colunas */
+}
+ 
+/* Telas médias (tablet): 2 colunas */
+@media (max-width: 1000px) {
+    .lista-carros {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+ 
+/* Celular: 1 coluna */
+@media (max-width: 600px) {
+    .lista-carros {
+        grid-template-columns: 1fr;
+    }
+}
+ 
+/* A caixa do card */
+.card {
+    background-color: var(--fundo-claro);
+    border: 1px solid var(--borda);
+    border-radius: 12px;
+    overflow: hidden;                /* a foto respeita os cantos redondos */
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+}
+ 
+.card:hover {
+    transform: translateY(-6px);     /* o card sobe ao passar o mouse */
+    border-color: var(--destaque);
+}
+ 
+/* Foto do carro: sempre com a mesma altura, sem esticar */
+.card img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;               /* recorta em vez de deformar */
+}
+ 
+.card h3 {
+    padding: 16px 16px 0;
+    font-size: 1.3rem;
+}
+ 
+.card p,
+.card ul {
+    padding: 0 16px;
+}
+ 
+.card ul {
+    list-style: none;
+    color: var(--texto-suave);
+    margin: 8px 0;
+}
+ 
+.card .preco {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--destaque);
+    margin: 8px 0;
+}
+ 
+.card button {
+    margin: 8px 16px 16px;
+    width: calc(100% - 32px);        /* botão ocupa a largura do card */
+}
+ 
+/* ==========================================================
+   CELULAR (telas com até 700px de largura)
+   ========================================================== */
+@media (max-width: 700px) {
+    header {
+        flex-direction: column;      /* logo em cima, menu embaixo */
+        gap: 10px;
+        padding: 12px 16px;
+    }
+ 
+    nav ul {
+        gap: 16px;
+        flex-wrap: wrap;             /* quebra linha se faltar espaço */
+        justify-content: center;
+    }
+ 
+    main section {
+        padding: 50px 20px;
+    }
+}
+ 
+/* ==========================================================
+   PÁGINA DE ESTOQUE (extras)
+   ========================================================== */
+ 
+/* Título da página de estoque centralizado */
+#titulo-estoque {
+    text-align: center;
+    padding-bottom: 20px;
+}
+ 
+/* Cards "em breve": mais apagados, para diferenciar dos disponíveis */
+.card-em-breve {
+    opacity: 0.8;
+}
+ 
+.card-em-breve img {
+    filter: grayscale(60%);          /* foto com cores mais discretas */
+}
